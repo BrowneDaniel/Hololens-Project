@@ -2,12 +2,10 @@
 
 ### Install Prerequisites
 Tools needed: [here](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools)!
+Unity 2017.3 required
 
-### Cognitive Api, Bing Speech to Text Keys
+### Cognitive Api
 * Endpoint: https://api.cognitive.microsoft.com/sts/v1.0
-	- Key 1: ee5ed96a46df475dbe75cf293b976912
-	- Key 2: b6178534b815424392fdb5b1c26e3ffc
-
 
 ## Creating a feature branch
   * Checkout a new branch with `git checkout -b feat/<feature-name>`

@@ -1,7 +1,0 @@
-Endpoint: https://api.cognitive.microsoft.com/sts/v1.0
-
-Key 1: ee5ed96a46df475dbe75cf293b976912
-
-Key 2: b6178534b815424392fdb5b1c26e3ffc
-
-Bing Speech to text API
