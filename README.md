@@ -2,7 +2,7 @@
 
 ### Install Prerequisites
 Tools needed: [here](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools)!
-Unity 2017.3 required
+Unity 2017.2.1 required
 
 ### Cognitive Api
 * Endpoint: https://api.cognitive.microsoft.com/sts/v1.0
