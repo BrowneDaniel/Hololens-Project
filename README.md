@@ -4,6 +4,24 @@
 Tools needed: [here](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools)!
 Unity 2017.2.1 required
 
+### Building the Project
+Navigate to build settings in Unity and ensure the target platform is set to UWP
+Ensure the remaining build settings are as follows:
+
+|Setting Name|Setting Value|
+|---|---|
+|Target Device|Hololens|
+|Build Type|D3D|
+|SDK| Latest Installed (16299 currently)|
+
+Then press Build to build the VS Project, or Build & Run to compile the VS Project and run in the emulator/device
+
+To build via Visual Studio:
+* Open the Solution
+* Set the solution platform to x86
+* Set the solution configuration to either Debug, Release or Master
+* Build/Debug
+
 ### Cognitive Api
 * Endpoint: https://api.cognitive.microsoft.com/sts/v1.0
 
