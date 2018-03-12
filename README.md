@@ -1,5 +1,7 @@
 # Hololens-Project
 ![Build Status](https://brianswhelan.visualstudio.com/_apis/public/build/definitions/52cd2f66-8403-4577-bb9c-342c8f4adf73/1/badge)
+
+[Latest Builds](http://brianw.netsoc.ie/HoloListen-Builds/)
 ### Install Prerequisites
 Tools needed: [here](https://developer.microsoft.com/en-us/windows/mixed-reality/install_the_tools)!
 Unity 2017.2.1 required
