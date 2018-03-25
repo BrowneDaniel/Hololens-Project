@@ -19,7 +19,6 @@ public class Voice : MonoBehaviour
     {
         string urlEncodedText = WWW.EscapeURL(text);
         string url = "https://api.microsofttranslator.com/V2/Http.svc/Translate?to=" + translatingLanguage + "&from=" + dictatingLanguage + "&text=" + urlEncodedText;
-        //string url = "http://brianw.netsoc.ie/telecomms.html";
         UnityWebRequest translate = UnityWebRequest.Get(url);
         translate.SetRequestHeader("Ocp-Apim-Subscription-Key", apiKey);
         yield return translate.SendWebRequest();
@@ -31,7 +30,7 @@ public class Voice : MonoBehaviour
         {
             string parsedResponse = translate.downloadHandler.text.Split('>')[1].Split('<')[0];
             Debug.Log(parsedResponse);
-            translatedT.GetComponent<Text>().text = parsedResponse;
+            t.GetComponent<Text>().text = parsedResponse;
         }
     }
     public void Dictate()
@@ -43,8 +42,9 @@ public class Voice : MonoBehaviour
         m_DictationRecognizer.DictationResult += (text, confidence) =>
             {
                 Debug.LogFormat("Dictation result: {0}", text);
-                t.GetComponent<Text>().text = text;
+                //t.GetComponent<Text>().text = text;
                 StartCoroutine(Translate(text));
+                
             };
 
         m_DictationRecognizer.DictationHypothesis += (text) =>
@@ -56,7 +56,7 @@ public class Voice : MonoBehaviour
         m_DictationRecognizer.DictationComplete += (completionCause) =>
             {
                 Debug.Log(completionCause.ToString());
-                
+                m_DictationRecognizer.Start();
             };
 
         m_DictationRecognizer.DictationError += (error, hresult) =>
