@@ -4,16 +4,22 @@ using UnityEngine.Networking;
 using UnityEngine.Windows.Speech;
 using HoloToolkit.Unity.InputModule;
 using System.Collections;
+using System;
 
 public class Voice : MonoBehaviour
 {
     private DictationRecognizer m_DictationRecognizer;
     public GameObject t;
     public GameObject translatedT;
+    public GameObject debug;
     public SpeechInputSource keywordRecogiser;
     public string apiKey;
     public string dictatingLanguage;
     public string translatingLanguage;
+
+    public void Awake(){
+      Dictate();
+    }
 
     public IEnumerator Translate(string text)
     {
@@ -35,32 +41,36 @@ public class Voice : MonoBehaviour
     }
     public void Dictate()
     {
-        Debug.Log("Started Dictation");
+        debug.GetComponent<Text>().text = "Started Dictation";
         PhraseRecognitionSystem.Shutdown();
         m_DictationRecognizer = new DictationRecognizer();
-
+        debug.GetComponent<Text>().text = "Created DictationRecogniser";
         m_DictationRecognizer.DictationResult += (text, confidence) =>
             {
+              debug.GetComponent<Text>().text = "Dictation Result";
                 Debug.LogFormat("Dictation result: {0}", text);
                 //t.GetComponent<Text>().text = text;
                 StartCoroutine(Translate(text));
-                
+
             };
 
         m_DictationRecognizer.DictationHypothesis += (text) =>
             {
+              debug.GetComponent<Text>().text = String.Format("Hypothesis {0}", text);
                 Debug.LogFormat("Dictation hypothesis: {0}", text);
                 t.GetComponent<Text>().text = text;
             };
 
         m_DictationRecognizer.DictationComplete += (completionCause) =>
             {
+              debug.GetComponent<Text>().text = completionCause.ToString();
                 Debug.Log(completionCause.ToString());
                 m_DictationRecognizer.Start();
             };
 
         m_DictationRecognizer.DictationError += (error, hresult) =>
             {
+              debug.GetComponent<Text>().text = error.ToString();
                 Debug.Log(error.ToString());
             };
 
